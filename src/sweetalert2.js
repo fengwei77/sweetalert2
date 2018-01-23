@@ -1,3 +1,5 @@
+const foo = 3
+
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
