@@ -109,13 +109,13 @@ gulp.task('watch', () => {
 
   gulp.watch([
     'test/sandbox.html',
-    'dist/sweetalert2.all.min.js'
+    'dist/sweetalert2.js'
   ]).on('change', browserSync.reload)
 
   gulp.watch([
     'src/**/*.js',
     'test/*.js'
-  ], ['compress'])
+  ], ['dev'])
 
   gulp.watch(['src/*.scss'], ['sass', 'compress'])
 })
