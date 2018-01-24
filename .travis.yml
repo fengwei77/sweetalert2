@@ -8,6 +8,7 @@ addons:
   google-chrome: latest
 
 before_script:
+  - gulp lint
   - gulp
   - bundlesize -f dist/sweetalert2.all.min.js -s 15kB
 
