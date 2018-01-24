@@ -54,7 +54,7 @@ gulp.task('all.min', ['sass'], () => {
   })
 })
 
-gulp.task('sass', ['sass-lint'], (cb) => {
+gulp.task('sass', (cb) => {
   gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
@@ -109,7 +109,8 @@ gulp.task('watch', () => {
 
   gulp.watch([
     'test/sandbox.html',
-    'dist/sweetalert2.js'
+    'dist/sweetalert2.js',
+    'dist/sweetalert2.css'
   ]).on('change', browserSync.reload)
 
   gulp.watch([
@@ -117,5 +118,5 @@ gulp.task('watch', () => {
     'test/*.js'
   ], ['dev'])
 
-  gulp.watch(['src/*.scss'], ['sass', 'compress'])
+  gulp.watch(['src/*.scss'], ['sass'])
 })
