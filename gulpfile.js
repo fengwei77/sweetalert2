@@ -13,7 +13,7 @@ const run = require('gulp-run')
 const pack = require('./package.json')
 const utils = require('./config/utils.js')
 
-gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
+gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'css.min', 'all', 'all.min'])
 
 gulp.task('commonjs', () => {
   return utils.packageRollup({
@@ -54,15 +54,18 @@ gulp.task('all.min', ['sass'], () => {
   })
 })
 
-gulp.task('sass', (cb) => {
-  gulp.src('src/sweetalert2.scss')
+gulp.task('sass', () => {
+  return gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
     .pipe(gulp.dest('dist'))
+})
+
+gulp.task('css.min', () => {
+  return gulp.src('dist/sweetalert2.css')
     .pipe(cleanCSS())
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'))
-    .on('end', cb)
 })
 
 gulp.task('ts', ['ts-lint'], () => {
